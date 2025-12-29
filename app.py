@@ -13,9 +13,7 @@ st.set_page_config(page_title="CSV Insight Studio", layout="wide")
 st.title("CSV Insight Studio")
 st.caption("Upload a CSV, filter rows, and explore charts with flexible aggregation.")
 
-with st.sidebar:
-    with st.expander("CSV Input", expanded=True):
-        data = load_csv_from_picker("Upload CSV")
+data = load_csv_from_picker("Upload CSV")
 
 if data is None:
     st.info("Upload a CSV file to begin.")

@@ -12,13 +12,6 @@ def _coerce_datetime(series: pd.Series) -> pd.Series:
     return pd.to_datetime(series, errors="coerce")
 
 
-def _is_datetime_like(series: pd.Series, threshold: float = 0.8) -> bool:
-    converted = pd.to_datetime(series, errors="coerce")
-    if converted.notna().sum() == 0:
-        return False
-    return converted.notna().mean() >= threshold
-
-
 def _safe_unique(values: Iterable) -> list:
     return sorted({value for value in values if pd.notna(value)})
 
@@ -38,35 +31,14 @@ def render_filters(data: pd.DataFrame) -> pd.DataFrame:
     filtered_data = data.copy()
 
     if title_column != "(none)":
-        title_series = filtered_data[title_column]
-        if pd.api.types.is_datetime64_any_dtype(title_series) or _is_datetime_like(title_series):
-            converted = _coerce_datetime(title_series)
-            filtered_data = filtered_data.assign(**{title_column: converted})
-            min_time = converted.min()
-            max_time = converted.max()
-
-            if pd.isna(min_time) or pd.isna(max_time):
-                st.warning("Selected title column could not be parsed as datetime.")
-            else:
-                start, end = st.slider(
-                    "Title time range",
-                    min_value=min_time.to_pydatetime(),
-                    max_value=max_time.to_pydatetime(),
-                    value=(min_time.to_pydatetime(), max_time.to_pydatetime()),
-                    format="YYYY-MM-DD HH:mm",
-                )
-                filtered_data = filtered_data[
-                    filtered_data[title_column].between(pd.Timestamp(start), pd.Timestamp(end))
-                ]
-        else:
-            title_values = _safe_unique(title_series)
-            selected_titles = st.multiselect(
-                "Choose titles",
-                options=title_values,
-                default=title_values[: min(len(title_values), 10)],
-            )
-            if selected_titles:
-                filtered_data = filtered_data[filtered_data[title_column].isin(selected_titles)]
+        title_values = _safe_unique(filtered_data[title_column])
+        selected_titles = st.multiselect(
+            "Choose titles",
+            options=title_values,
+            default=title_values[: min(len(title_values), 10)],
+        )
+        if selected_titles:
+            filtered_data = filtered_data[filtered_data[title_column].isin(selected_titles)]
 
     if time_column != "(none)":
         converted = _coerce_datetime(filtered_data[time_column])

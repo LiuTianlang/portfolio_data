@@ -25,6 +25,21 @@ body {
   padding: 0 24px;
 }
 
+.layout {
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 h1 {
   margin-bottom: 8px;
   font-size: 2.25rem;
@@ -62,25 +77,7 @@ h1 {
 }
 
 .charts-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   margin-bottom: 12px;
-}
-
-.charts-header button {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 16px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.charts-header button:hover {
-  opacity: 0.9;
 }
 
 .chart-card {
@@ -105,6 +102,18 @@ h1 {
   margin-bottom: 6px;
 }
 
+.chart-card__filters {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+.chart-card__filters h5 {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
 .chart-card__chart {
   background: var(--card);
   border: 1px solid var(--border);
@@ -123,6 +132,10 @@ h1 {
 }
 
 @media (max-width: 900px) {
+  .sidebar {
+    position: static;
+  }
+
   .chart-card__content {
     grid-template-columns: 1fr;
   }

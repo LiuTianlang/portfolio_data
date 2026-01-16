@@ -146,49 +146,6 @@ class ChartBuilder:
                                     tooltip={"placement": "bottom", "always_visible": True},
                                     persistence=True,
                                 ),
-                                html.Div(
-                                    className="chart-card__filters",
-                                    children=[
-                                        html.H5("Chart-specific filters"),
-                                        html.Label("Title filter column"),
-                                        dcc.Dropdown(
-                                            id={
-                                                "type": "chart-filter-title-column",
-                                                "index": index,
-                                            },
-                                            options=[],
-                                            clearable=True,
-                                            persistence=True,
-                                        ),
-                                        html.Label("Choose titles"),
-                                        dcc.Dropdown(
-                                            id={
-                                                "type": "chart-filter-title-values",
-                                                "index": index,
-                                            },
-                                            options=[],
-                                            multi=True,
-                                            persistence=True,
-                                        ),
-                                        html.Label("Time filter column"),
-                                        dcc.Dropdown(
-                                            id={
-                                                "type": "chart-filter-time-column",
-                                                "index": index,
-                                            },
-                                            options=[],
-                                            clearable=True,
-                                            persistence=True,
-                                        ),
-                                        html.Label("Time range"),
-                                        dcc.DatePickerRange(
-                                            id={
-                                                "type": "chart-filter-time-range",
-                                                "index": index,
-                                            }
-                                        ),
-                                    ],
-                                ),
                             ],
                         ),
                         html.Div(
@@ -197,11 +154,7 @@ class ChartBuilder:
                                 dcc.Loading(
                                     dcc.Graph(
                                         id={"type": "chart-graph", "index": index},
-                                        config={
-                                            "displayModeBar": True,
-                                            "scrollZoom": True,
-                                            "responsive": True,
-                                        },
+                                        config={"displayModeBar": False},
                                     )
                                 )
                             ],

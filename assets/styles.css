@@ -25,27 +25,6 @@ body {
   padding: 0 24px;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-
-.sidebar {
-  position: sticky;
-  top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
 h1 {
   margin-bottom: 8px;
   font-size: 2.25rem;
@@ -104,21 +83,6 @@ h1 {
   opacity: 0.9;
 }
 
-.secondary-button {
-  margin-top: 12px;
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.secondary-button:hover {
-  background: rgba(37, 99, 235, 0.08);
-}
-
 .chart-card {
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -141,18 +105,6 @@ h1 {
   margin-bottom: 6px;
 }
 
-.chart-card__filters {
-  margin-top: 16px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--border);
-}
-
-.chart-card__filters h5 {
-  margin: 8px 0;
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
 .chart-card__chart {
   background: var(--card);
   border: 1px solid var(--border);
@@ -171,14 +123,6 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: static;
-  }
-
   .chart-card__content {
     grid-template-columns: 1fr;
   }

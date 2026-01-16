@@ -1,0 +1,142 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --text: #1f2a37;
+  --muted: #6b7280;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page {
+  max-width: 1200px;
+  margin: 32px auto 64px;
+  padding: 0 24px;
+}
+
+.layout {
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: 2.25rem;
+}
+
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
+  margin-top: 20px;
+}
+
+.section h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+}
+
+.hint {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.filter label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.charts-header {
+  margin-bottom: 12px;
+}
+
+.chart-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  background: #f9fafb;
+  margin-bottom: 16px;
+}
+
+.chart-card__content {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.chart-card__controls label {
+  display: block;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.chart-card__filters {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+
+.chart-card__filters h5 {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.chart-card__chart {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.upload-area {
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+
+.data-preview {
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: static;
+  }
+
+  .chart-card__content {
+    grid-template-columns: 1fr;
+  }
+}

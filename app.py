@@ -44,10 +44,7 @@ class DashboardApp:
             className="page",
             children=[
                 html.H1("CSV Insight Studio"),
-                html.P(
-                    "Upload a CSV, filter rows, and explore charts with aggregation.",
-                    className="hint",
-                ),
+                html.P("Upload a CSV, filter rows, and explore charts with aggregation."),
                 html.Div(
                     className="section",
                     children=[
@@ -59,9 +56,11 @@ class DashboardApp:
                                 "width": "100%",
                                 "height": "60px",
                                 "lineHeight": "60px",
+                                "borderWidth": "1px",
+                                "borderStyle": "dashed",
+                                "borderRadius": "6px",
                                 "textAlign": "center",
                             },
-                            className="upload-area",
                             multiple=False,
                         ),
                         html.Div(id=self.ids.upload_info, className="hint"),
@@ -126,25 +125,10 @@ class DashboardApp:
                     className="section",
                     children=[
                         html.H2("4) Preview filtered data"),
-                        html.Div(
-                            className="data-preview",
-                            children=[
-                                dash_table.DataTable(
-                                    id=self.ids.data_preview,
-                                    page_size=10,
-                                    style_table={"overflowX": "auto"},
-                                    style_header={
-                                        "backgroundColor": "#f1f5f9",
-                                        "fontWeight": "600",
-                                    },
-                                    style_cell={
-                                        "fontFamily": "Inter, system-ui, sans-serif",
-                                        "fontSize": "14px",
-                                        "padding": "8px",
-                                        "whiteSpace": "normal",
-                                    },
-                                )
-                            ],
+                        dash_table.DataTable(
+                            id=self.ids.data_preview,
+                            page_size=10,
+                            style_table={"overflowX": "auto"},
                         ),
                     ],
                 ),
